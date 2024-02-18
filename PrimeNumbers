@@ -1,0 +1,31 @@
+"""
+To implement the Sieve of Eratosthenes algorithm in Python, you can follow these steps12345:
+    1. Create a list of integers from 2 to the highest number you want to check, marking them all as prime.
+    2. Initialize a variable p to 2 (the lowest prime).
+    3. Mark all multiples of p as composite (i.e. non-prime).
+    4. Set p to the next number marked as prime.
+Repeat steps 3 and 4 until no subsequent primes are found.
+The time complexity of the Sieve of Eratosthenes is O(n * log(log(n))).
+
+"""
+def prime_mumbers_sieve(n):
+  #initiaze a list with True upto n numbers
+  prime = [True for i in range (2,n+1)]
+    p = 2
+    while p*p <= n:
+        if prime[p]:
+            for i in range(p*p,n+1,p):
+                prime[i] = False
+        p += 1
+    for p in range(2,n):
+        if prime[p]:
+            print(p)
+
+#simple solution
+def prime_num(n):
+    for num in range(2,n):
+        if all(num%i for i in range(2,num)):
+            print(num)
+
+prime_num(100   )
+
